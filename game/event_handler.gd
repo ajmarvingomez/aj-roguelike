@@ -1,6 +1,7 @@
 class_name EventHandler
 extends Node
-
+## Engine for handling events in the game
+## @tutorial: https://gameprogrammingpatterns.com/command.html
 func get_action() -> Action:
 	var action: Action = null
 
