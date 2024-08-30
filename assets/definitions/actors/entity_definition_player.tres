@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EntityDefinition" load_steps=4 format=3 uid="uid://c37n1mihiat01"]
+[gd_resource type="Resource" script_class="EntityDefinition" load_steps=4 format=3 uid="uid://bttkyy1fbwao5"]
 
 [ext_resource type="Script" path="res://game/entities/entity_definition.gd" id="1_ryx68"]
 [ext_resource type="Texture2D" uid="uid://ce7kythhq5n6m" path="res://assets/monochrome_packed.png" id="2_uy5g7"]
@@ -9,5 +9,7 @@ region = Rect2(400, 16, 16, 16)
 
 [resource]
 script = ExtResource("1_ryx68")
+name = "Player"
 texture = SubResource("AtlasTexture_w8hw8")
 color = Color(1, 0.463185, 0.216554, 1)
+is_blocking_movement = true

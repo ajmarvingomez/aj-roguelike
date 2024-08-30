@@ -5,6 +5,19 @@ extends Sprite2D
 ##
 ## @tutorial: https://selinadev.github.io/06-rogueliketutorial-02/
 
+var _definition: EntityDefinition
+
+func is_blocking_movement() -> bool:
+    return _definition.is_blocking_movement
+
+func get_entity_name() -> String:
+    return _definition.name
+
+func set_entity_type(entity_definition: EntityDefinition) -> void:
+    _definition = entity_definition
+    texture = entity_definition.texture
+    modulate = entity_definition.color
+
 var grid_position: Vector2i: ## Defines our Grid Position
     set(value):
         grid_position = value ## set grid_position to the value
@@ -13,8 +26,7 @@ var grid_position: Vector2i: ## Defines our Grid Position
 func _init(start_position: Vector2i, entity_definition: EntityDefinition) -> void:
     centered = false ## Set the window position to Top Left
     grid_position = start_position ## Set the grid position to the start position
-    texture = entity_definition.texture ## Take the texture from the entity_definition
-    modulate = entity_definition.color ## Use the color of the entity_definition
+    set_entity_type(entity_definition)
 
 func move(move_offset: Vector2i):
     grid_position += move_offset

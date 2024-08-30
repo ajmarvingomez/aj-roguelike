@@ -14,6 +14,14 @@ extends Node
 @export var room_max_size: int = 10
 @export var room_min_size: int = 6
 
+@export_category("Monsters RNG")
+@export var max_monsters_per_room: int = 2
+
+const entity_types = {
+	"orc": preload("res://assets/definitions/actors/entity_definition_orc.tres"),
+	"troll": preload("res://assets/definitions/actors/entity_definition_troll.tres")
+}
+
 var _rng := RandomNumberGenerator.new()
 
 func _carve_tile(dungeon: MapData, x: int, y: int) -> void: ## draw and generate the floor tile at coordinates
@@ -47,9 +55,31 @@ func _tunnel_between(dungeon: MapData, start: Vector2i, end: Vector2i) -> void:
 		_tunnel_vertical(dungeon, start.x, start.y, end.y)
 		_tunnel_horizontal(dungeon, end.y, start.x, end.x)
 
+func _place_entities(dungeon: MapData, room: Rect2i) -> void:
+	var number_of_monsters: int = _rng.randi_range(0, max_monsters_per_room)
+
+	for _i in number_of_monsters:
+		var x: int = _rng.randi_range(room.position.x + 1, room.end.x - 1)
+		var y: int = _rng.randi_range(room.position.y + 1, room.end.y - 1)
+		var new_entity_position := Vector2i(x, y)
+
+		var can_place = true
+		for entity in dungeon.entities:
+			if entity.grid_position == new_entity_position:
+				can_place = false
+				break
+
+		if can_place:
+			var new_entity: Entity
+			if _rng.randf() < 0.8:
+				new_entity = Entity.new(new_entity_position, entity_types.orc)
+			else:
+				new_entity = Entity.new(new_entity_position, entity_types.troll)
+			dungeon.entities.append(new_entity)
+
 func generate_dungeon(player: Entity) -> MapData: ## generate the dungeon
 	var dungeon := MapData.new(map_width, map_height)
-
+	dungeon.entities.append(player)
 	var rooms: Array[Rect2i] = []
 
 	for _try_room in max_rooms:
@@ -77,6 +107,8 @@ func generate_dungeon(player: Entity) -> MapData: ## generate the dungeon
 			player.grid_position = new_room.get_center()
 		else:
 			_tunnel_between(dungeon, rooms.back().get_center(), new_room.get_center())
+
+		_place_entities(dungeon, new_room)
 		rooms.append(new_room)
 	return dungeon
 
