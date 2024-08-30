@@ -1,14 +1,13 @@
 class_name Map
 extends Node2D
 
-@export var map_width: int = 80 ## 80 Tiles
-@export var map_height: int = 45
-
 var map_data: MapData
 
+@onready var dungeon_generator: DungeonGenerator = $DungeonGenerator ## create a new instance of the dungeon generator class
+
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	map_data = MapData.new(map_width, map_height)
+func generate(player: Entity) -> void:
+	map_data = dungeon_generator.generate_dungeon(player)
 	_place_tiles()
 
 func _place_tiles() -> void:

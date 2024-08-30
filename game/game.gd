@@ -10,16 +10,16 @@ const player_definition: EntityDefinition = preload("res://assets/definitions/ac
 @onready var map: Map = $Map
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	var player_start_pos: Vector2i = Grid.world_to_grid(get_viewport_rect().size.floor() / 2) ## Start the player in the center of the game window
+func _ready() -> void:
 
-	player = Entity.new(player_start_pos, player_definition) ## Create a new Entity using the player's position and entity definition
+	player = Entity.new(Vector2i.ZERO, player_definition) ## Create a new Entity using the player's position and entity definition
+
+	var camera: Camera2D = $Camera2D
+	remove_child(camera)
+	player.add_child(camera)
 
 	entities.add_child(player) ## add the player as a child node
-	var npc := Entity.new(player_start_pos + Vector2i.RIGHT, player_definition) ## Create an NPC using the players position and definition
-	npc.modulate = Color.BLUE ## Color the NPC blue
-
-	entities.add_child(npc) ## add the NPC as a child node
+	map.generate(player)
 	pass # Replace with function body.
 
 func _physics_process(_delta: float) -> void:

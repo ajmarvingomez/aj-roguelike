@@ -2,6 +2,8 @@ class_name MapData
 extends RefCounted
 ## Keeps track of the map data
 
+
+## Tile types are defined here.
 const tile_types = {
 	"floor": preload("res://assets/definitions/tiles/tile_definition_floor.tres"),
 	"wall": preload("res://assets/definitions/tiles/tile_definition_wall.tres")
@@ -21,13 +23,13 @@ func _setup_tiles() -> void:
 	for y in height:
 		for x in width:
 			var tile_position := Vector2i(x, y)
-			var tile := Tile.new(tile_position, tile_types.floor)
+			var tile := Tile.new(tile_position, tile_types.wall)
 			tiles.append(tile)
 	for x in range(30, 34):
 		var tile: Tile = get_tile(Vector2i(x, 22))
 		tile.set_tile_type(tile_types.wall)
 
-func get_tile(grid_position: Vector2i) -> Tile:
+func get_tile(grid_position: Vector2i) -> Tile: ## Get tile from a set of coordinates
 	var tile_index: int = grid_to_index(grid_position)
 	if tile_index == -1:
 		return null

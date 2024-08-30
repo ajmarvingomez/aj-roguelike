@@ -11,7 +11,7 @@ func _init(grid_position: Vector2i, tile_definition: TileDefinition) -> void:
 	position = Grid.grid_to_world(grid_position) ## Set grid based on grid position
 	set_tile_type(tile_definition)
 
-func set_tile_type(tile_definition: TileDefinition) -> void:
+func set_tile_type(tile_definition: TileDefinition) -> void: ## Set the type of tile at the coordinates
 	_definition = tile_definition
 	texture = _definition.texture
 	modulate = _definition.color_dark
