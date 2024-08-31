@@ -2,10 +2,10 @@ class_name MeleeAction
 extends ActionWithDirection
 ## Controls attacks
 
-func perform(game: Game, entity: Entity) -> void:
+func perform() -> void:
     var destination := Vector2i(entity.grid_position + offset)
 
-    var target: Entity = game.get_map_data().get_blocking_entity_at_location(destination)
+    var target: Entity = get_blocking_entity_at_destination()
 
     if not target:
         return

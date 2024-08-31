@@ -6,6 +6,7 @@ extends Sprite2D
 ## @tutorial: https://selinadev.github.io/06-rogueliketutorial-02/
 
 var _definition: EntityDefinition
+var map_data: MapData
 
 func is_blocking_movement() -> bool:
     return _definition.is_blocking_movement
@@ -23,9 +24,10 @@ var grid_position: Vector2i: ## Defines our Grid Position
         grid_position = value ## set grid_position to the value
         position = Grid.grid_to_world(grid_position) ## Translate the integer to the world's grid
 
-func _init(start_position: Vector2i, entity_definition: EntityDefinition) -> void:
+func _init(map_data: MapData, start_position: Vector2i, entity_definition: EntityDefinition) -> void:
     centered = false ## Set the window position to Top Left
     grid_position = start_position ## Set the grid position to the start position
+    self.map_data = map_data
     set_entity_type(entity_definition)
 
 func move(move_offset: Vector2i):
