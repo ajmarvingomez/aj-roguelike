@@ -1,4 +1,4 @@
-class_name EventHandler
+class_name InputHandler
 extends Node
 ## Engine for handling events in the game
 ## @tutorial: https://gameprogrammingpatterns.com/command.html
