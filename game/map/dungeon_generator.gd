@@ -111,6 +111,8 @@ func generate_dungeon(player: Entity) -> MapData: ## generate the dungeon
 
 		_place_entities(dungeon, new_room)
 		rooms.append(new_room)
+
+	dungeon.setup_pathfinding()
 	return dungeon
 
 # Called when the node enters the scene tree for the first time.
