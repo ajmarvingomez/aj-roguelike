@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://game/entities/entity_definition.gd" id="1_hphve"]
 [ext_resource type="Texture2D" uid="uid://bv265tyxji75k" path="res://assets/resources/default_death_texture.tres" id="1_n2q8g"]
-[ext_resource type="Script" path="res://game/entities/components/ComponentDefinitions/fighter_component_definition.gd" id="2_akec6"]
+[ext_resource type="Script" path="res://game/entities/components/componentDefinitions/fighter_component_definition.gd" id="2_0sai4"]
 [ext_resource type="Texture2D" uid="uid://ce7kythhq5n6m" path="res://assets/monochrome_packed.png" id="2_ext7a"]
 
-[sub_resource type="Resource" id="Resource_yutg1"]
-script = ExtResource("2_akec6")
+[sub_resource type="Resource" id="Resource_f8kyl"]
+script = ExtResource("2_0sai4")
 max_hp = 10
-power = 0
+power = 1
 defense = 0
 death_texture = ExtResource("1_n2q8g")
 death_color = Color(0.545098, 0, 0, 1)
@@ -24,5 +24,5 @@ texture = SubResource("AtlasTexture_xknu5")
 color = Color(0.247059, 0.498039, 0.247059, 1)
 blocks_movement = true
 type = 2
-fighter_definition = SubResource("Resource_yutg1")
+fighter_definition = SubResource("Resource_f8kyl")
 ai_type = 1
