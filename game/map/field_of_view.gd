@@ -60,6 +60,7 @@ func _cast_light(map_data: MapData, x: int, y: int, radius: int, row: int, start
 
 			var current_tile: Tile = map_data.get_tile_xy(ax, ay)
 
+
 			if (dx * dx + dy * dy < radius2):
 				current_tile.is_in_view = true
 				_fov.append(current_tile)

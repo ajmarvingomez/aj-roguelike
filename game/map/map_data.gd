@@ -2,6 +2,8 @@ class_name MapData
 extends RefCounted
 ## Keeps track of the map data
 
+## Signals
+signal entity_placed(entity)
 
 ## Tile types are defined here.
 const tile_types = {
@@ -99,3 +101,10 @@ func get_actor_at_location(location: Vector2i) -> Entity:
 		if actor.grid_position == location:
 			return actor
 	return null
+
+func get_items() -> Array[Entity]:
+	var items: Array[Entity] = []
+	for entity in entities:
+		if entity.consumable_component != null:
+			items.append(entity)
+	return items

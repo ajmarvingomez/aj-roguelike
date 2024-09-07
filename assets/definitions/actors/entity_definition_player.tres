@@ -26,3 +26,4 @@ blocks_movement = true
 type = 2
 fighter_definition = SubResource("Resource_hwt6g")
 ai_type = 1
+inventory_capacity = 10

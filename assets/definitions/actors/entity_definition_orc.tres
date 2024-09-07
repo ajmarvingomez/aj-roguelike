@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://game/entities/components/componentDefinitions/fighter_component_definition.gd" id="2_0sai4"]
 [ext_resource type="Texture2D" uid="uid://ce7kythhq5n6m" path="res://assets/monochrome_packed.png" id="2_ext7a"]
 
-[sub_resource type="Resource" id="Resource_f8kyl"]
+[sub_resource type="Resource" id="Resource_sxqv6"]
 script = ExtResource("2_0sai4")
 max_hp = 10
 power = 1
@@ -24,5 +24,6 @@ texture = SubResource("AtlasTexture_xknu5")
 color = Color(0.247059, 0.498039, 0.247059, 1)
 blocks_movement = true
 type = 2
-fighter_definition = SubResource("Resource_f8kyl")
+fighter_definition = SubResource("Resource_sxqv6")
 ai_type = 1
+inventory_capacity = 0

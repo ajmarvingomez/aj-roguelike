@@ -4,5 +4,6 @@ extends Action
 ##
 ## Allows player to exit the game.
 
-func perform() -> void:
+func perform() -> bool:
     entity.get_tree().quit()
+    return false

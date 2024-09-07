@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://cim8i62wnsyxr"]
+
+[ext_resource type="Texture2D" uid="uid://ce7kythhq5n6m" path="res://assets/monochrome_packed.png" id="1_g8lws"]
+[ext_resource type="Script" path="res://game/gui/InventoryMenu/inventory_menu.gd" id="1_j5du5"]
+[ext_resource type="FontFile" uid="uid://bpfxmq5r2axv3" path="res://assets/fonts/Kenney Pixel.ttf" id="2_athiq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25tgt"]
+atlas = ExtResource("1_g8lws")
+region = Rect2(768, 336, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cm218"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("AtlasTexture_25tgt")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_78obl"]
+font = ExtResource("2_athiq")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_1mp6i"]
+color = Color(1, 1, 1, 1)
+
+[node name="InventoryMenu" type="CanvasLayer"]
+script = ExtResource("1_j5du5")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_cm218")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_78obl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_1mp6i")
+
+[node name="InventoryList" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2

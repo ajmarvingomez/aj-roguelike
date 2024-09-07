@@ -20,6 +20,7 @@ func update_fov(player_position: Vector2i) -> void:
 # Called when the node enters the scene tree for the first time.
 func generate(player: Entity) -> void:
 	map_data = dungeon_generator.generate_dungeon(player)
+	map_data.entity_placed.connect(entities.add_child)
 	_place_tiles()
 	_place_entities()
 
